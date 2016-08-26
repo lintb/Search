@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ZZB.Search.OutInterface
@@ -20,8 +21,8 @@ namespace ZZB.Search.OutInterface
         /// </summary>
         /// <param name="keyWord">关键字</param>
         /// <param name="index">页数</param>
-        /// <returns>资源</returns>
-        List<Search> Search(string keyWord, int index);
+        /// <param name="callBack">查询资源后执行方法</param>
+        void Search(string keyWord, int index, Action<Search> callBack);
 
     }
 }

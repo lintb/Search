@@ -36,9 +36,8 @@ namespace ZZB.Search.UI
             }
         }
 
-        private async void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            List<OutInterface.Search> list = new List<OutInterface.Search>();
             if (cbBoxsearchEngine.SelectedItem.ToString() == "全部")
             {
                 foreach (object item in cbBoxsearchEngine.Items)
@@ -46,20 +45,21 @@ namespace ZZB.Search.UI
                     SearchEngineViewModel search = item as SearchEngineViewModel;
                     if (search != null)
                     {
-                        var temp = await AsyncGetSearchList(search);
-                        list.AddRange(temp);
+                        GetSearch(search, search.ToString());
                     }
                 }
             }
-            foreach (OutInterface.Search search in list)
-            {
-                dataGrid.Rows.Add(search.CreateTime.ToString("yyyy-MM-dd"), search.Title, $"{search.Size}MB", search.DownloadUrl, "测试");
-            }
         }
 
-        private Task<List<OutInterface.Search>> AsyncGetSearchList(SearchEngineViewModel search)
+        private void GetSearch(SearchEngineViewModel search, string name)
         {
-            return Task.Run(() => search.SearchService.Search(txtKeyWord.Text, ++search.Index));
+            search.SearchService.Search(txtKeyWord.Text, ++search.Index, s =>
+            {
+                this.Invoke(new Action(() =>
+                {
+                    dataGrid.Rows.Add(s.CreateTime.ToString("yyyy-MM-dd"), s.Title, $"{s.Size}MB", s.DownloadUrl, name);
+                }));
+            });
         }
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)

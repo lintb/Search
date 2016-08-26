@@ -25,40 +25,24 @@ namespace ZZB.Search.Kisssub
         /// <summary>
         /// 未完成的多线程数，用于监视多线程完成成矿
         /// </summary>
-        private int _unfinishedCount;
+        //private int _unfinishedCount;
 
-        public List<OutInterface.Search> Search(string keyWord, int index)
+        public void Search(string keyWord, int index, Action<OutInterface.Search> callBack)
         {
-            List<OutInterface.Search> list = new List<OutInterface.Search>();
+            //List<OutInterface.Search> list = new List<OutInterface.Search>();
             //获取html并用HtmlAgilityPack获取节点信息
             string html = Common.GetPage(string.Format(_searchUrl, keyWord, index));
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
             //获取资源列表
-            GetSearchModel(htmlDoc, list, "alt1");
-            GetSearchModel(htmlDoc, list, "alt2");
-            //监视多线程完成情况
-            while (true)
-            {
-                if (_unfinishedCount == 0)
-                {
-                    break;
-                }
-            }
+            GetSearchModel(htmlDoc, "alt1", callBack);
+            GetSearchModel(htmlDoc, "alt2", callBack);
 
-            return list;
         }
 
-        /// <summary>
-        /// 获取资源列表
-        /// </summary>
-        /// <param name="htmlDoc"></param>
-        /// <param name="list"></param>
-        /// <param name="className"></param>
-        private void GetSearchModel(HtmlDocument htmlDoc, List<OutInterface.Search> list, string className)
+        private void GetSearchModel(HtmlDocument htmlDoc, string className, Action<OutInterface.Search> callBack)
         {
             HtmlNodeCollection htmlNodeCollection = htmlDoc.DocumentNode.SelectNodes($"//tr[@class='{className}']");
-            _unfinishedCount += htmlNodeCollection.Count;
             foreach (HtmlNode htmlNode in htmlNodeCollection)
             {
                 //开辟线程获取资源
@@ -76,12 +60,12 @@ namespace ZZB.Search.Kisssub
                     search.Size = d;
 
                     search.CreateTime = GetDateTime(htmlNode.ChildNodes[1].InnerText.Trim());
-                    
+
                     search.DownloadUrl = GetDownloadUrl(Url + titleNode[1].GetAttributeValue("href", ""));
 
-                    list.Add(search);
+                    // list.Add(search);
 
-                    _unfinishedCount--;
+                    callBack(search);
                 }).Start();
             }
         }
