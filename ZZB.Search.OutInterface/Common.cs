@@ -6,6 +6,11 @@ namespace ZZB.Search.OutInterface
 {
     public static class Common
     {
+        /// <summary>
+        /// 获取html页面
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public static string GetPage(string url)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
