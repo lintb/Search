@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.UI", "ZZB.Search.UI\ZZB.Search.UI.csproj", "{D357FAD0-30D4-4059-924C-212814570BC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Interface", "ZZB.Search.Interface\ZZB.Search.Interface.csproj", "{C969DCD5-A6A3-4493-8642-4E84A6104999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Kisssub", "ZZB.Search.Kisssub\ZZB.Search.Kisssub.csproj", "{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SearchDll", "SearchDll", "{3D3D66C8-BF76-4B0E-A077-27BE430D56D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.OutInterface", "ZZB.Search.OutInterface\ZZB.Search.OutInterface.csproj", "{F8736361-9744-4B03-A374-585457B8D0D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Service", "ZZB.Search.Service\ZZB.Search.Service.csproj", "{D9DE473A-A585-46F1-AADF-CCE9B6B9AA2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Factory", "ZZB.Search.Factory\ZZB.Search.Factory.csproj", "{01A26CEF-7792-4113-BC98-A85940675DC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Model", "ZZB.Search.Model\ZZB.Search.Model.csproj", "{D5CBD0A9-9E97-4905-A9BE-418676ADF839}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D357FAD0-30D4-4059-924C-212814570BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D357FAD0-30D4-4059-924C-212814570BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D357FAD0-30D4-4059-924C-212814570BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D357FAD0-30D4-4059-924C-212814570BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C969DCD5-A6A3-4493-8642-4E84A6104999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C969DCD5-A6A3-4493-8642-4E84A6104999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C969DCD5-A6A3-4493-8642-4E84A6104999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C969DCD5-A6A3-4493-8642-4E84A6104999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8736361-9744-4B03-A374-585457B8D0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8736361-9744-4B03-A374-585457B8D0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8736361-9744-4B03-A374-585457B8D0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8736361-9744-4B03-A374-585457B8D0D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9DE473A-A585-46F1-AADF-CCE9B6B9AA2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9DE473A-A585-46F1-AADF-CCE9B6B9AA2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9DE473A-A585-46F1-AADF-CCE9B6B9AA2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9DE473A-A585-46F1-AADF-CCE9B6B9AA2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01A26CEF-7792-4113-BC98-A85940675DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01A26CEF-7792-4113-BC98-A85940675DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01A26CEF-7792-4113-BC98-A85940675DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01A26CEF-7792-4113-BC98-A85940675DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6} = {3D3D66C8-BF76-4B0E-A077-27BE430D56D8}
+	EndGlobalSection
+EndGlobal
