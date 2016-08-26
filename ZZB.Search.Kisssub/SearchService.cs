@@ -12,6 +12,7 @@ namespace ZZB.Search.Kisssub
     /// </summary>
     public class SearchService : ISearchService
     {
+
         public string Url { get; } = @"http://www.kisssub.org/";
         public string Name { get; } = "爱恋动漫";
 
