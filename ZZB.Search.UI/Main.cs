@@ -26,6 +26,7 @@ namespace ZZB.Search.UI
 
         private void Main_Load(object sender, EventArgs e)
         {
+            //加载搜索引擎
             List<ISearchService> list = _searchEngine.GetSearchEngine();
             if (list != null)
             {
@@ -74,6 +75,7 @@ namespace ZZB.Search.UI
             {
                 if (e.RowIndex >= 0)
                 {
+                    //复制DowdloadUrl字段
                     Clipboard.SetDataObject(dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
                 }
             }
