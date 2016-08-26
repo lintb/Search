@@ -14,6 +14,8 @@ namespace ZZB.Search.Kisssub
         private readonly string _searchUrl =
             @"http://www.kisssub.org/search.php?keyword={0}&page={1}";
 
+        private int _unfinishedCount = 0;
+
         public List<OutInterface.Search> Search(string keyWord, int index)
         {
             List<OutInterface.Search> list = new List<OutInterface.Search>();
@@ -21,36 +23,48 @@ namespace ZZB.Search.Kisssub
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
 
-            list.AddRange(GetSearchModel(htmlDoc, "alt1"));
-            list.AddRange(GetSearchModel(htmlDoc, "alt2"));
+            GetSearchModel(htmlDoc, list, "alt1");
+            GetSearchModel(htmlDoc, list, "alt2");
+
+            while (true)
+            {
+                if (_unfinishedCount == 0)
+                {
+                    break;
+                }
+            }
 
             return list;
         }
 
-        private List<OutInterface.Search> GetSearchModel(HtmlDocument htmlDoc, string className)
+        private void GetSearchModel(HtmlDocument htmlDoc, List<OutInterface.Search> list, string className)
         {
-            List<OutInterface.Search> list = new List<OutInterface.Search>();
             HtmlNodeCollection htmlNodeCollection = htmlDoc.DocumentNode.SelectNodes($"//tr[@class='{className}']");
+            _unfinishedCount += htmlNodeCollection.Count;
             foreach (HtmlNode htmlNode in htmlNodeCollection)
             {
-                OutInterface.Search search = new OutInterface.Search();
+                new Task(() =>
+                {
+                    OutInterface.Search search = new OutInterface.Search();
 
-                var titleNode = htmlNode.ChildNodes[5].ChildNodes;
-                search.Title = titleNode[1].InnerText.Trim();
+                    var titleNode = htmlNode.ChildNodes[5].ChildNodes;
+                    search.Title = titleNode[1].InnerText.Trim();
 
-                string size = htmlNode.ChildNodes[7].InnerText.Trim();
+                    string size = htmlNode.ChildNodes[7].InnerText.Trim();
 
-                double d;
-                double.TryParse(size.TrimEnd('M', 'B'), out d);
-                search.Size = d;
+                    double d;
+                    double.TryParse(size.TrimEnd('M', 'B'), out d);
+                    search.Size = d;
 
-                search.CreateTime = GetDateTime(htmlNode.ChildNodes[1].InnerText.Trim());
+                    search.CreateTime = GetDateTime(htmlNode.ChildNodes[1].InnerText.Trim());
 
-                search.DownloadUrl = GetDownloadUrl(Url + titleNode[1].GetAttributeValue("href", ""));
+                    search.DownloadUrl = GetDownloadUrl(Url + titleNode[1].GetAttributeValue("href", ""));
 
-                list.Add(search);
+                    list.Add(search);
+
+                    _unfinishedCount--;
+                }).Start();
             }
-            return list;
         }
 
         private string GetDownloadUrl(string url)
