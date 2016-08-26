@@ -36,7 +36,7 @@ namespace ZZB.Search.UI
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
             if (cbBoxsearchEngine.SelectedItem.ToString() == "全部")
             {
@@ -45,21 +45,27 @@ namespace ZZB.Search.UI
                     SearchEngineViewModel search = item as SearchEngineViewModel;
                     if (search != null)
                     {
-                        GetSearch(search, search.ToString());
+                        //使用异步，防止UI线程阻塞
+                        await GetSearch(search, search.ToString());
                     }
                 }
             }
         }
 
-        private void GetSearch(SearchEngineViewModel search, string name)
+        private Task GetSearch(SearchEngineViewModel search, string name)
         {
-            search.SearchService.Search(txtKeyWord.Text, ++search.Index, s =>
+            return Task.Run(() =>
             {
-                this.Invoke(new Action(() =>
+                //执行搜索资源方法
+                search.SearchService.Search(txtKeyWord.Text, ++search.Index, s =>
                 {
-                    dataGrid.Rows.Add(s.CreateTime.ToString("yyyy-MM-dd"), s.Title, $"{s.Size}MB", s.DownloadUrl, name);
-                }));
+                    this.Invoke(new Action(() =>
+                    {
+                        dataGrid.Rows.Add(s.CreateTime.ToString("yyyy-MM-dd"), s.Title, $"{s.Size}MB", s.DownloadUrl, name);
+                    }));
+                });
             });
+
         }
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
