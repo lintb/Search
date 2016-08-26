@@ -46,13 +46,13 @@ namespace ZZB.Search.UI
                     if (search != null)
                     {
                         //使用异步，防止UI线程阻塞
-                        await GetSearch(search, search.ToString());
+                        await GetSearch(search);
                     }
                 }
             }
         }
 
-        private Task GetSearch(SearchEngineViewModel search, string name)
+        private Task GetSearch(SearchEngineViewModel search)
         {
             return Task.Run(() =>
             {
@@ -61,7 +61,7 @@ namespace ZZB.Search.UI
                 {
                     this.Invoke(new Action(() =>
                     {
-                        dataGrid.Rows.Add(s.CreateTime.ToString("yyyy-MM-dd"), s.Title, $"{s.Size}MB", s.DownloadUrl, name);
+                        dataGrid.Rows.Add(s.CreateTime.ToString("yyyy-MM-dd"), s.Title, $"{s.Size}MB", s.DownloadUrl, search.ToString());
                     }));
                 });
             });
