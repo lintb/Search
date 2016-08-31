@@ -19,8 +19,7 @@ namespace ZZB.Search.Kisssub
         /// <summary>
         /// 搜索url
         /// </summary>
-        private readonly string _searchUrl =
-            @"http://www.kisssub.org/search.php?keyword={0}&page={1}";
+        private readonly string _searchUrl = @"http://www.kisssub.org/search.php?keyword={0}&page={1}";
 
         /// <summary>
         /// 未完成的多线程数，用于监视多线程完成成矿

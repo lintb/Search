@@ -46,8 +46,11 @@ namespace ZZB.Search.UI
                     SearchEngineViewModel search = item as SearchEngineViewModel;
                     if (search != null)
                     {
-                        //使用异步，防止UI线程阻塞
-                        await GetSearch(search);
+                        if (search.SearchService.Name == "Btmeet")
+                        {
+                            //使用异步，防止UI线程阻塞
+                            await GetSearch(search);
+                        }
                     }
                 }
             }

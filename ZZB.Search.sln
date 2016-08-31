@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Factory", "ZZB.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Model", "ZZB.Search.Model\ZZB.Search.Model.csproj", "{D5CBD0A9-9E97-4905-A9BE-418676ADF839}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Btmeet", "ZZB.Search.Btmeet\ZZB.Search.Btmeet.csproj", "{380BFB1B-9011-41BF-84E6-1C8DC8CB1197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,11 +55,16 @@ Global
 		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5CBD0A9-9E97-4905-A9BE-418676ADF839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380BFB1B-9011-41BF-84E6-1C8DC8CB1197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380BFB1B-9011-41BF-84E6-1C8DC8CB1197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380BFB1B-9011-41BF-84E6-1C8DC8CB1197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380BFB1B-9011-41BF-84E6-1C8DC8CB1197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6} = {3D3D66C8-BF76-4B0E-A077-27BE430D56D8}
+		{380BFB1B-9011-41BF-84E6-1C8DC8CB1197} = {3D3D66C8-BF76-4B0E-A077-27BE430D56D8}
 	EndGlobalSection
 EndGlobal
