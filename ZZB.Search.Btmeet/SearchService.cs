@@ -26,22 +26,37 @@ namespace ZZB.Search.Btmeet
             HtmlNodeCollection htmlNodeCollection = htmlDoc.DocumentNode.SelectNodes("//div[@class='item-title']/h3/a");
             foreach (HtmlNode htmlNode in htmlNodeCollection)
             {
-                OutInterface.Search search = new OutInterface.Search();
-                string url = htmlNode.GetAttributeValue("href", "");
-                string oneHtml = Common.GetPage(Url + url);
-                HtmlDocument oneHtmlDoc = new HtmlDocument();
-                oneHtmlDoc.LoadHtml(oneHtml);
-                Console.WriteLine(oneHtml);
-                //获取TITLE
-                HtmlNodeCollection titleNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@id='wall']/h2");
-                Match match = Regex.Match(titleNodeCollection[0].InnerText, "document\\.write\\(decodeURIComponent\\(\"(.+?)\"\\)\\);");
-                string[] paths = match.Groups[1].Value.Split(new[] { "\"+\"" }, StringSplitOptions.RemoveEmptyEntries);
-                search.Title = HttpUtility.UrlDecode(string.Join("", paths));
+                new Task(() =>
+                {
+                    OutInterface.Search search = new OutInterface.Search();
+                    string url = htmlNode.GetAttributeValue("href", "");
+                    string oneHtml = Common.GetPage(Url + url);
+                    HtmlDocument oneHtmlDoc = new HtmlDocument();
+                    oneHtmlDoc.LoadHtml(oneHtml);
 
-                //获取创建时间
-                HtmlNodeCollection createTimeNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@class='fileDetail']/table[@class='detail-table']");
-                Console.WriteLine(createTimeNodeCollection.Count);
-                Console.WriteLine(createTimeNodeCollection[1].InnerText);
+                    //获取TITLE
+                    HtmlNodeCollection titleNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@id='wall']/h2");
+                    Match match = Regex.Match(titleNodeCollection[0].InnerText, "document\\.write\\(decodeURIComponent\\(\"(.+?)\"\\)\\);");
+                    string[] paths = match.Groups[1].Value.Split(new[] { "\"+\"" }, StringSplitOptions.RemoveEmptyEntries);
+                    search.Title = HttpUtility.UrlDecode(string.Join("", paths));
+
+                    //获取创建时间
+                    HtmlNodeCollection createTimeNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@class='fileDetail']/table/tr/td");
+                    DateTime dt;
+                    DateTime.TryParse(createTimeNodeCollection[1].InnerText, out dt);
+                    search.CreateTime = dt;
+
+                    //大小
+                    double size;
+                    double.TryParse(createTimeNodeCollection[4].InnerText.TrimEnd(' ', 'M', 'B', '\n'), out size);
+                    search.Size = size;
+
+                    //下载地址
+                    HtmlNodeCollection urlNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@class='fileDetail']/div[1]/div[2]/a");
+                    search.DownloadUrl = urlNodeCollection[0].InnerText;
+
+                    callBack(search);
+                }).Start();
             }
         }
     }
