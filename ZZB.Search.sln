@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.UI", "ZZB.Search.UI\ZZB.Search.UI.csproj", "{D357FAD0-30D4-4059-924C-212814570BC1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{924F2F04-3FA4-4F80-9AAF-C21BF721D7E6} = {924F2F04-3FA4-4F80-9AAF-C21BF721D7E6}
+		{380BFB1B-9011-41BF-84E6-1C8DC8CB1197} = {380BFB1B-9011-41BF-84E6-1C8DC8CB1197}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZB.Search.Interface", "ZZB.Search.Interface\ZZB.Search.Interface.csproj", "{C969DCD5-A6A3-4493-8642-4E84A6104999}"
 EndProject
