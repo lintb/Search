@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using HtmlAgilityPack;
 using ZZB.Search.OutInterface;
 
@@ -24,21 +26,22 @@ namespace ZZB.Search.Btmeet
             HtmlNodeCollection htmlNodeCollection = htmlDoc.DocumentNode.SelectNodes("//div[@class='item-title']/h3/a");
             foreach (HtmlNode htmlNode in htmlNodeCollection)
             {
-                //OutInterface.Search search = new OutInterface.Search() { Title = htmlNode.InnerText };
-                ////string title = htmlNode.InnerHtml;
-                //callBack(search);
-
+                OutInterface.Search search = new OutInterface.Search();
                 string url = htmlNode.GetAttributeValue("href", "");
-                string ohtml = Common.GetPage(Url + url);
-                HtmlDocument ohtmlDoc = new HtmlDocument();
-                ohtmlDoc.LoadHtml(ohtml);
-                HtmlNodeCollection oHtmlNodeCollection = ohtmlDoc.DocumentNode.SelectNodes("//div[@id='wall']/h2");
-                Console.WriteLine(oHtmlNodeCollection.Count);
-                foreach (HtmlNode node in oHtmlNodeCollection)
-                {
-                    Console.WriteLine(node.InnerText);
-                }
+                string oneHtml = Common.GetPage(Url + url);
+                HtmlDocument oneHtmlDoc = new HtmlDocument();
+                oneHtmlDoc.LoadHtml(oneHtml);
+                Console.WriteLine(oneHtml);
+                //获取TITLE
+                HtmlNodeCollection titleNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@id='wall']/h2");
+                Match match = Regex.Match(titleNodeCollection[0].InnerText, "document\\.write\\(decodeURIComponent\\(\"(.+?)\"\\)\\);");
+                string[] paths = match.Groups[1].Value.Split(new[] { "\"+\"" }, StringSplitOptions.RemoveEmptyEntries);
+                search.Title = HttpUtility.UrlDecode(string.Join("", paths));
 
+                //获取创建时间
+                HtmlNodeCollection createTimeNodeCollection = oneHtmlDoc.DocumentNode.SelectNodes("//div[@class='fileDetail']/table[@class='detail-table']");
+                Console.WriteLine(createTimeNodeCollection.Count);
+                Console.WriteLine(createTimeNodeCollection[1].InnerText);
             }
         }
     }
