@@ -7,19 +7,24 @@ namespace ZZB.Search.Service
 {
     public class SearchPage : ISearchPage
     {
-        private int _curPage;
+        //private int _curPage;
 
-        private SearchEngineViewModel[] _models;
+        private readonly SearchEngineViewModel[] _models;
 
         public SearchPage(SearchEngineViewModel[] models)
         {
-            _curPage = 0;
             _models = models;
         }
 
         public void GetSearchListByPage(string keyword, int page, Action<OutInterface.Search> callback)
         {
-
+            if (_models != null)
+            {
+                foreach (SearchEngineViewModel model in _models)
+                {
+                    model.SearchService.Search(keyword, page, callback);
+                }
+            }
         }
     }
 }
