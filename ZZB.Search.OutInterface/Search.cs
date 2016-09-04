@@ -4,6 +4,13 @@ namespace ZZB.Search.OutInterface
 {
     public class Search
     {
+        public string Keyword { get; }
+
+        public Search(string keyword)
+        {
+            Keyword = keyword;
+        }
+
         /// <summary>
         /// 创建时间
         /// </summary>

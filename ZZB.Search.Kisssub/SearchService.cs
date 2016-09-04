@@ -34,12 +34,12 @@ namespace ZZB.Search.Kisssub
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
             //获取资源列表
-            GetSearchModel(htmlDoc, "alt1", callBack);
-            GetSearchModel(htmlDoc, "alt2", callBack);
+            GetSearchModel(htmlDoc, "alt1", callBack, keyWord);
+            GetSearchModel(htmlDoc, "alt2", callBack, keyWord);
 
         }
 
-        private void GetSearchModel(HtmlDocument htmlDoc, string className, Action<OutInterface.Search> callBack)
+        private void GetSearchModel(HtmlDocument htmlDoc, string className, Action<OutInterface.Search> callBack,string keyword)
         {
             HtmlNodeCollection htmlNodeCollection = htmlDoc.DocumentNode.SelectNodes($"//tr[@class='{className}']");
             foreach (HtmlNode htmlNode in htmlNodeCollection)
@@ -47,7 +47,7 @@ namespace ZZB.Search.Kisssub
                 //开辟线程获取资源
                 new Task(() =>
                 {
-                    OutInterface.Search search = new OutInterface.Search();
+                    OutInterface.Search search = new OutInterface.Search(keyword);
 
                     var titleNode = htmlNode.ChildNodes[5].ChildNodes;
                     search.Title = titleNode[1].InnerText.Trim();

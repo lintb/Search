@@ -28,7 +28,7 @@ namespace ZZB.Search.Btmeet
             {
                 new Task(() =>
                 {
-                    OutInterface.Search search = new OutInterface.Search();
+                    OutInterface.Search search = new OutInterface.Search(keyWord);
                     string url = htmlNode.GetAttributeValue("href", "");
                     string oneHtml = Common.GetPage(Url + url);
                     HtmlDocument oneHtmlDoc = new HtmlDocument();

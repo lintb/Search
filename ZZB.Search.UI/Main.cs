@@ -72,11 +72,15 @@ namespace ZZB.Search.UI
                 }
                 else
                 {
-                    
+                    _allSearchPage.GetSearchListByPage(txtKeyWord.Text, 1, AcceptSearch);
                 }
 
-
             }
+        }
+
+        private void AcceptSearch(OutInterface.Search search)
+        {
+
         }
 
         #region 旧代码
