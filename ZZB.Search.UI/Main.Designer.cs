@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtKeyWord = new System.Windows.Forms.TextBox();
             this.cbBoxsearchEngine = new System.Windows.Forms.ComboBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
@@ -82,14 +82,14 @@
             this.dataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreatTime,
@@ -107,8 +107,8 @@
             // 
             // CreatTime
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CreatTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CreatTime.DefaultCellStyle = dataGridViewCellStyle27;
             this.CreatTime.HeaderText = "发布时间";
             this.CreatTime.Name = "CreatTime";
             this.CreatTime.ReadOnly = true;
@@ -121,8 +121,8 @@
             // 
             // Size
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Size.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Size.DefaultCellStyle = dataGridViewCellStyle28;
             this.Size.HeaderText = "大小";
             this.Size.Name = "Size";
             this.Size.ReadOnly = true;
@@ -130,8 +130,8 @@
             // DowdloadUrl
             // 
             this.DowdloadUrl.ActiveLinkColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.DowdloadUrl.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.DowdloadUrl.DefaultCellStyle = dataGridViewCellStyle29;
             this.DowdloadUrl.HeaderText = "下载地址";
             this.DowdloadUrl.LinkColor = System.Drawing.Color.DeepSkyBlue;
             this.DowdloadUrl.Name = "DowdloadUrl";
@@ -141,8 +141,8 @@
             // 
             // From
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.From.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.From.DefaultCellStyle = dataGridViewCellStyle30;
             this.From.HeaderText = "来源";
             this.From.Name = "From";
             this.From.ReadOnly = true;
@@ -176,7 +176,7 @@
             this.btnPage1.TabIndex = 4;
             this.btnPage1.Text = "1";
             this.btnPage1.UseVisualStyleBackColor = true;
-            this.btnPage1.Visible = false;
+            this.btnPage1.Click += new System.EventHandler(this.btnPage1_Click);
             // 
             // btnPage2
             // 
@@ -186,7 +186,7 @@
             this.btnPage2.TabIndex = 4;
             this.btnPage2.Text = "2";
             this.btnPage2.UseVisualStyleBackColor = true;
-            this.btnPage2.Visible = false;
+            this.btnPage2.Click += new System.EventHandler(this.btnPage2_Click);
             // 
             // btnPage3
             // 
@@ -196,7 +196,7 @@
             this.btnPage3.TabIndex = 4;
             this.btnPage3.Text = "3";
             this.btnPage3.UseVisualStyleBackColor = true;
-            this.btnPage3.Visible = false;
+            this.btnPage3.Click += new System.EventHandler(this.btnPage3_Click);
             // 
             // btnPage4
             // 
@@ -206,7 +206,7 @@
             this.btnPage4.TabIndex = 4;
             this.btnPage4.Text = "4";
             this.btnPage4.UseVisualStyleBackColor = true;
-            this.btnPage4.Visible = false;
+            this.btnPage4.Click += new System.EventHandler(this.btnPage4_Click);
             // 
             // btnPage5
             // 
@@ -216,7 +216,7 @@
             this.btnPage5.TabIndex = 4;
             this.btnPage5.Text = "5";
             this.btnPage5.UseVisualStyleBackColor = true;
-            this.btnPage5.Visible = false;
+            this.btnPage5.Click += new System.EventHandler(this.btnPage5_Click);
             // 
             // btnNext
             // 

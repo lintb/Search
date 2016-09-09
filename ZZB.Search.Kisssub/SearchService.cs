@@ -47,7 +47,7 @@ namespace ZZB.Search.Kisssub
                 //开辟线程获取资源
                 new Task(() =>
                 {
-                    OutInterface.Search search = new OutInterface.Search(keyword);
+                    OutInterface.Search search = new OutInterface.Search();
 
                     var titleNode = htmlNode.ChildNodes[5].ChildNodes;
                     search.Title = titleNode[1].InnerText.Trim();

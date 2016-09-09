@@ -12,11 +12,11 @@ namespace ZZB.Search.Btmeet
 {
     public class SearchService : ISearchService
     {
-        public string Url { get; } = @"http://www.btmeet.com/";
+        public string Url { get; } = @"http://www.btmeet.net/";
 
         public string Name { get; } = "Btmeet";
 
-        private readonly string _searchUrl = @"http://www.btmeet.com/search/{0}/{1}-1.html";
+        private readonly string _searchUrl = @"http://www.btmeet.net/search/{0}/{1}-1.html";
 
         public void Search(string keyWord, int index, Action<OutInterface.Search> callBack)
         {
@@ -28,7 +28,7 @@ namespace ZZB.Search.Btmeet
             {
                 new Task(() =>
                 {
-                    OutInterface.Search search = new OutInterface.Search(keyWord);
+                    OutInterface.Search search = new OutInterface.Search();
                     string url = htmlNode.GetAttributeValue("href", "");
                     string oneHtml = Common.GetPage(Url + url);
                     HtmlDocument oneHtmlDoc = new HtmlDocument();

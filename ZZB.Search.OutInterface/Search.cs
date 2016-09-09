@@ -2,15 +2,8 @@
 
 namespace ZZB.Search.OutInterface
 {
-    public class Search
+    public partial class Search
     {
-        public string Keyword { get; }
-
-        public Search(string keyword)
-        {
-            Keyword = keyword;
-        }
-
         /// <summary>
         /// 创建时间
         /// </summary>
@@ -30,5 +23,6 @@ namespace ZZB.Search.OutInterface
         /// 下载地址
         /// </summary>
         public string DownloadUrl { get; set; }
+
     }
 }

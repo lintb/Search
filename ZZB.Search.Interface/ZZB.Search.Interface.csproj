@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZZB.Search.Model\ZZB.Search.Model.csproj">
+      <Project>{D5CBD0A9-9E97-4905-A9BE-418676ADF839}</Project>
+      <Name>ZZB.Search.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZZB.Search.OutInterface\ZZB.Search.OutInterface.csproj">
       <Project>{F8736361-9744-4B03-A374-585457B8D0D9}</Project>
       <Name>ZZB.Search.OutInterface</Name>

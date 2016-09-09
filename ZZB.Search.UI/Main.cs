@@ -15,7 +15,7 @@ namespace ZZB.Search.UI
 
         private ISearchPage _allSearchPage;
 
-        private Dictionary<string, List<OutInterface.Search>> _dicSearch = new Dictionary<string, List<OutInterface.Search>>();
+        //private Dictionary<string, List<OutInterface.Search>> _dicSearch = new Dictionary<string, List<OutInterface.Search>>();
 
         public Main()
         {
@@ -47,62 +47,29 @@ namespace ZZB.Search.UI
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
+            await Search(1);
+        }
+
+        private async Task Search(int index)
+        {
+            dataGrid.Rows.Clear();
             if (cbBoxsearchEngine.SelectedItem.ToString() == "全部")
             {
-                #region 旧代码
-
-                //foreach (object item in cbBoxsearchEngine.Items)
-                //{
-                //    SearchEngineViewModel search = item as SearchEngineViewModel;
-                //    if (search != null)
-                //    {
-                //        if (search.SearchService.Name == "Btmeet")
-                //        {
-                //            //使用异步，防止UI线程阻塞
-                //            await GetSearch(search);
-                //        }
-                //    }
-                //}
-
-                #endregion
-
-                if (_dicSearch.ContainsKey(txtKeyWord.Text))
-                {
-
-                }
-                else
-                {
-                    _allSearchPage.GetSearchListByPage(txtKeyWord.Text, 1, AcceptSearch);
-                }
-
+                await _allSearchPage.GetSearchListByPage(txtKeyWord.Text, index, AcceptSearch);
             }
         }
 
-        private void AcceptSearch(OutInterface.Search search)
+        private void AcceptSearch(OutInterface.Search search, string name)
         {
-
+            if (search != null)
+            {
+                this.Invoke(new Action(() =>
+                {
+                    dataGrid.Rows.Add(search.CreateTime.ToString("yyyy-MM-dd"), search.Title, $"{search.Size}MB",
+                        search.DownloadUrl, name);
+                }));
+            }
         }
-
-        #region 旧代码
-
-        //private Task GetSearch(SearchEngineViewModel search)
-        //{
-        //    return Task.Run(() =>
-        //    {
-        //        //执行搜索资源方法
-        //        search.SearchService.Search(txtKeyWord.Text, ++search.Index, s =>
-        //        {
-        //            this.Invoke(new Action(() =>
-        //            {
-        //                dataGrid.Rows.Add(s.CreateTime.ToString("yyyy-MM-dd"), s.Title, $"{s.Size}MB", s.DownloadUrl, search.ToString());
-        //            }));
-        //        });
-        //    });
-
-        //}
-
-        #endregion
-
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -122,6 +89,31 @@ namespace ZZB.Search.UI
             {
                 btnSearch_Click(null, null);
             }
+        }
+
+        private async void btnPage1_Click(object sender, EventArgs e)
+        {
+            await Search(1);
+        }
+
+        private async void btnPage2_Click(object sender, EventArgs e)
+        {
+            await Search(2);
+        }
+
+        private async void btnPage3_Click(object sender, EventArgs e)
+        {
+            await Search(3);
+        }
+
+        private async void btnPage4_Click(object sender, EventArgs e)
+        {
+            await Search(4);
+        }
+
+        private async void btnPage5_Click(object sender, EventArgs e)
+        {
+            await Search(5);
         }
     }
 }

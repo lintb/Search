@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ZZB.Search.Model
+﻿namespace ZZB.Search.Model
 {
     public class SearchPageModel
     {

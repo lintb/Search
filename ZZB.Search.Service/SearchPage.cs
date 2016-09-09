@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ZZB.Search.Interface;
 using ZZB.Search.Model;
 
@@ -16,15 +17,24 @@ namespace ZZB.Search.Service
             _models = models;
         }
 
-        public void GetSearchListByPage(string keyword, int page, Action<OutInterface.Search> callback)
+        public Task GetSearchListByPage(string keyword, int page, Action<OutInterface.Search, string> callback)
         {
-            if (_models != null)
+            return Task.Run(() =>
             {
-                foreach (SearchEngineViewModel model in _models)
+                if (_models != null)
                 {
-                    model.SearchService.Search(keyword, page, callback);
+                    foreach (SearchEngineViewModel model in _models)
+                    {
+                        new Task(() =>
+                        {
+                            model.SearchService.Search(keyword, page, s =>
+                            {
+                                callback(s, model.ToString());
+                            });
+                        }).Start();
+                    }
                 }
-            }
+            });
         }
     }
 }

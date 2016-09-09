@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using ZZB.Search.Model;
 
 namespace ZZB.Search.Interface
 {
     public interface ISearchPage
     {
-        void GetSearchListByPage(string keyword, int page, Action<OutInterface.Search> callback);
+        Task GetSearchListByPage(string keyword, int page, Action<OutInterface.Search, string> callback);
     }
 }
