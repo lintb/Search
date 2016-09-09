@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtKeyWord = new System.Windows.Forms.TextBox();
             this.cbBoxsearchEngine = new System.Windows.Forms.ComboBox();
             this.dataGrid = new System.Windows.Forms.DataGridView();
@@ -82,14 +82,15 @@
             this.dataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            this.dataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CreatTime,
@@ -107,8 +108,8 @@
             // 
             // CreatTime
             // 
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CreatTime.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CreatTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.CreatTime.HeaderText = "发布时间";
             this.CreatTime.Name = "CreatTime";
             this.CreatTime.ReadOnly = true;
@@ -121,8 +122,8 @@
             // 
             // Size
             // 
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Size.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Size.DefaultCellStyle = dataGridViewCellStyle3;
             this.Size.HeaderText = "大小";
             this.Size.Name = "Size";
             this.Size.ReadOnly = true;
@@ -130,8 +131,8 @@
             // DowdloadUrl
             // 
             this.DowdloadUrl.ActiveLinkColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.DowdloadUrl.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.DowdloadUrl.DefaultCellStyle = dataGridViewCellStyle4;
             this.DowdloadUrl.HeaderText = "下载地址";
             this.DowdloadUrl.LinkColor = System.Drawing.Color.DeepSkyBlue;
             this.DowdloadUrl.Name = "DowdloadUrl";
@@ -141,8 +142,8 @@
             // 
             // From
             // 
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.From.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.From.DefaultCellStyle = dataGridViewCellStyle5;
             this.From.HeaderText = "来源";
             this.From.Name = "From";
             this.From.ReadOnly = true;
@@ -170,6 +171,7 @@
             // 
             // btnPage1
             // 
+            this.btnPage1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPage1.Location = new System.Drawing.Point(219, 424);
             this.btnPage1.Name = "btnPage1";
             this.btnPage1.Size = new System.Drawing.Size(25, 23);
@@ -180,6 +182,7 @@
             // 
             // btnPage2
             // 
+            this.btnPage2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPage2.Location = new System.Drawing.Point(250, 424);
             this.btnPage2.Name = "btnPage2";
             this.btnPage2.Size = new System.Drawing.Size(25, 23);
@@ -190,6 +193,7 @@
             // 
             // btnPage3
             // 
+            this.btnPage3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPage3.Location = new System.Drawing.Point(281, 424);
             this.btnPage3.Name = "btnPage3";
             this.btnPage3.Size = new System.Drawing.Size(25, 23);
@@ -200,6 +204,7 @@
             // 
             // btnPage4
             // 
+            this.btnPage4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPage4.Location = new System.Drawing.Point(312, 424);
             this.btnPage4.Name = "btnPage4";
             this.btnPage4.Size = new System.Drawing.Size(25, 23);
@@ -210,6 +215,7 @@
             // 
             // btnPage5
             // 
+            this.btnPage5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPage5.Location = new System.Drawing.Point(343, 424);
             this.btnPage5.Name = "btnPage5";
             this.btnPage5.Size = new System.Drawing.Size(25, 23);
@@ -248,6 +254,7 @@
             this.Name = "Main";
             this.Text = "搜索工具";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.SizeChanged += new System.EventHandler(this.Main_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

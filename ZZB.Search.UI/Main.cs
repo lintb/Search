@@ -26,6 +26,21 @@ namespace ZZB.Search.UI
         private void Initialize()
         {
             cbBoxsearchEngine.SelectedIndex = 0;
+
+            SetColumnsWidth();
+        }
+
+        private void SetColumnsWidth()
+        {
+            //发布时间
+            dataGrid.Columns[0].Width = 100;
+
+            //大小
+            dataGrid.Columns[2].Width = 80;
+          
+            //来源
+            dataGrid.Columns[4].Width = 100;
+
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -73,14 +88,18 @@ namespace ZZB.Search.UI
 
         private void dataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGrid.Columns[e.ColumnIndex].Name == "DowdloadUrl")
+            if (e.ColumnIndex > 0)
             {
-                if (e.RowIndex >= 0)
+                if (dataGrid.Columns[e.ColumnIndex].Name == "DowdloadUrl")
                 {
-                    //复制DowdloadUrl字段
-                    Clipboard.SetDataObject(dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                    if (e.RowIndex >= 0)
+                    {
+                        //复制DowdloadUrl字段
+                        Clipboard.SetDataObject(dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                    }
                 }
             }
+
         }
 
         private void txtKeyWord_KeyDown(object sender, KeyEventArgs e)
@@ -114,6 +133,11 @@ namespace ZZB.Search.UI
         private async void btnPage5_Click(object sender, EventArgs e)
         {
             await Search(5);
+        }
+
+        private void Main_SizeChanged(object sender, EventArgs e)
+        {
+            SetColumnsWidth();
         }
     }
 }
