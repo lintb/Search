@@ -37,7 +37,7 @@ namespace ZZB.Search.UI
 
             //大小
             dataGrid.Columns[2].Width = 80;
-          
+
             //来源
             dataGrid.Columns[4].Width = 100;
 
@@ -71,6 +71,17 @@ namespace ZZB.Search.UI
             if (cbBoxsearchEngine.SelectedItem.ToString() == "全部")
             {
                 await _allSearchPage.GetSearchListByPage(txtKeyWord.Text, index, AcceptSearch);
+            }
+            else
+            {
+                SearchEngineViewModel search = cbBoxsearchEngine.SelectedItem as SearchEngineViewModel;
+                await Task.Run(() =>
+                 {
+                     search?.SearchService.Search(txtKeyWord.Text, index, s =>
+                     {
+                         AcceptSearch(s, search.SearchService.Name);
+                     });
+                 });
             }
         }
 
